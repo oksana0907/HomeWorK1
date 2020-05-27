@@ -11,7 +11,7 @@ let startBtn = document.getElementById('start'),
 
     expensesItem = document.getElementsByClassName('expenses-item'),
     expensesBtn = document.getElementsByTagName('button')[0],
-    optionalexpensesBtn = Document.getElementsByTagName('button')[1],
+    optionalexpensesBtn = document.getElementsByTagName('button')[1],
     countBtn = document.getElementsByTagName('button')[2],
     optonalExpensesItem = document.querySelectorAll('.optaonalexpenses-item'),
     incomeItem = document.querySelector('.choose-income'),
@@ -23,21 +23,22 @@ let startBtn = document.getElementById('start'),
     dayValue = document.querySelector('.day-value');
 
 
-
-
 let money, time;
 
-function start() {
-    money = +prompt("Ваш бюджет на месяц", '');
+
+ startBtn.addEventListener('click', function() {
     time = prompt('Введите дату в формате YY-MM-DD');
-
-
+    money = +prompt("Ваш бюджет на месяц", '');
+    
     while (isNaN(money) || money == "" || money == null) {
         money = +prompt("Ваш бюджет на месяц", '');
     }
-}
 
- start();
+    appData.budget = money;
+    appData.timeData = time;
+    budgetValue.textContent = money.toFixed();
+
+ });
 
  let appData = {
     budget: money,
